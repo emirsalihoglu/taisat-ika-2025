@@ -1,0 +1,102 @@
+﻿<h3>WebSocket Panel</h3>
+
+<div class="mb-2">
+    <label>Server IP:</label>
+    <input class="form-control" @bind="serverIp" placeholder="ws://127.0.0.1:8080" />
+</div>
+
+<div class="mb-2">
+    <label>Topic:</label>
+    <input class="form-control" @bind="topic" placeholder="example/topic" />
+</div>
+
+<div class="mb-3">
+    <button class="btn btn-success me-2" @onclick="ConnectWebSocket" disabled="@isConnected">Connect</button>
+    <button class="btn btn-danger" @onclick="DisconnectWebSocket" disabled="@(webSocket is null)">Disconnect</button>
+</div>
+
+<div>
+    Connection Status:
+    <strong class="@statusClass">@statusMessage</strong>
+</div>
+
+@code {
+    string serverIp = "ws://xxx.xxx.xxx.xxx:pppp";
+    string topic = "example/topic";
+    ClientWebSocket? webSocket;
+    CancellationTokenSource? cts;
+
+    bool isConnected => webSocket?.State == WebSocketState.Open;
+
+    string statusMessage = "Not connected";
+    string statusClass => isConnected ? "text-success" : "text-danger";
+
+    async Task ConnectWebSocket()
+    {
+        try
+        {
+            cts = new();
+            webSocket = new ClientWebSocket();
+            await webSocket.ConnectAsync(new Uri(serverIp), cts.Token);
+
+            statusMessage = "Connected";
+
+            _ = Task.Run(ReceiveLoop); // veri alma işlemini başlat
+        }
+        catch (Exception ex)
+        {
+            statusMessage = $"Error: {ex.Message}";
+        }
+        StateHasChanged();
+    }
+
+    async Task DisconnectWebSocket()
+    {
+        try
+        {
+            if (webSocket != null)
+            {
+                await webSocket.CloseAsync(WebSocketCloseStatus.NormalClosure, "Closed by user", CancellationToken.None);
+                webSocket.Dispose();
+                webSocket = null;
+                statusMessage = "Disconnected";
+            }
+        }
+        catch (Exception ex)
+        {
+            statusMessage = $"Error: {ex.Message}";
+        }
+        StateHasChanged();
+    }
+
+    async Task ReceiveLoop()
+    {
+        var buffer = new byte[4096];
+
+        while (webSocket?.State == WebSocketState.Open)
+        {
+            try
+            {
+                var result = await webSocket.ReceiveAsync(new ArraySegment<byte>(buffer), CancellationToken.None);
+                if (result.MessageType == WebSocketMessageType.Close)
+                {
+                    statusMessage = "Disconnected by server";
+                    await webSocket.CloseAsync(WebSocketCloseStatus.NormalClosure, "Closing", CancellationToken.None);
+                }
+                else
+                {
+                    var message = Encoding.UTF8.GetString(buffer, 0, result.Count);
+                    Console.WriteLine($"Received: {message}"); // ileride burada routing yapacağız
+                }
+            }
+            catch (Exception ex)
+            {
+                statusMessage = $"Receive error: {ex.Message}";
+                break;
+            }
+
+            StateHasChanged();
+        }
+    }
+}
+

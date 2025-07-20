@@ -1,0 +1,43 @@
+﻿@using Microsoft.Maui.ApplicationModel
+@using Microsoft.Maui.Media
+@using System.IO
+
+<h3>Camera</h3>
+
+<button class="btn btn-primary mb-3" @onclick="TakePhotoAsync">Take Photo</button>
+
+@if (!string.IsNullOrEmpty(photoPath))
+{
+    <img src="@photoPath" class="img-thumbnail" style="max-width:300px;" />
+}
+
+@code {
+    string? photoPath;
+
+    async Task TakePhotoAsync()
+    {
+        try
+        {
+            if (!MediaPicker.Default.IsCaptureSupported)
+            {
+                await App.Current.MainPage.DisplayAlert("Error", "Camera not supported", "OK");
+                return;
+            }
+
+            var photo = await MediaPicker.Default.CapturePhotoAsync();
+            if (photo is not null)
+            {
+                var newFile = Path.Combine(FileSystem.CacheDirectory, photo.FileName);
+                using var stream = await photo.OpenReadAsync();
+                using var newStream = File.OpenWrite(newFile);
+                await stream.CopyToAsync(newStream);
+
+                photoPath = newFile;
+            }
+        }
+        catch (Exception ex)
+        {
+            await App.Current.MainPage.DisplayAlert("Error", ex.Message, "OK");
+        }
+    }
+}
