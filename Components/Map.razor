@@ -1,5 +1,64 @@
-﻿<h3>Map</h3>
+﻿<h3>Live Map</h3>
+
+<div id="map" style="height: 400px; width: 100%;"></div>
+
+<div class="mt-3">
+    <p><strong>Current Position:</strong> @mouseLat, @mouseLng</p>
+    <p><strong>Selected Target:</strong> @(targetLat is not null ? $"{targetLat}, {targetLng}" : "None")</p>
+
+    <button class="btn btn-primary" @onclick="ConfirmTarget" disabled="@targetConfirmed || targetLat is null">
+        Confirm Target
+    </button>
+
+    @if (targetConfirmed)
+    {
+        <p class="text-success mt-2">Target locked.</p>
+    }
+</div>
 
 @code {
+    [Inject] IJSRuntime JS { get; set; } = default!;
 
+    double mouseLat;
+    double mouseLng;
+
+    double? targetLat;
+    double? targetLng;
+
+    bool targetConfirmed = false;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JS.InvokeVoidAsync("initializeLeafletMap", DotNetObjectReference.Create(this));
+        }
+    }
+
+    [JSInvokable]
+    public void UpdateMousePosition(double lat, double lng)
+    {
+        if (!targetConfirmed)
+        {
+            mouseLat = lat;
+            mouseLng = lng;
+            StateHasChanged();
+        }
+    }
+
+    [JSInvokable]
+    public void SetTargetPosition(double lat, double lng)
+    {
+        if (!targetConfirmed)
+        {
+            targetLat = lat;
+            targetLng = lng;
+            StateHasChanged();
+        }
+    }
+
+    void ConfirmTarget()
+    {
+        targetConfirmed = true;
+    }
 }

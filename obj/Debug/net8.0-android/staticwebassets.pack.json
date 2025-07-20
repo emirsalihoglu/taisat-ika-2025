@@ -25,6 +25,10 @@
       "PackagePath": "staticwebassets\\index.html"
     },
     {
+      "Id": "C:\\Users\\memir\\source\\repos\\taisat\\wwwroot\\leaflet-map.js",
+      "PackagePath": "staticwebassets\\leaflet-map.js"
+    },
+    {
       "Id": "obj\\Debug\\net8.0-android\\staticwebassets\\msbuild.build.taisat.props",
       "PackagePath": "build\\taisat.props"
     },

@@ -1,5 +1,26 @@
-﻿<h3>Tilt</h3>
+﻿<h3>Tilt Indicators</h3>
+
+<div class="row text-center">
+    <!-- X Ekseni (Roll - sağ/sol eğim) -->
+    <div class="col">
+        <p><strong>X Axis (Roll)</strong></p>
+        <div class="tilt-container">
+            <img src="images/car_front.png" class="tilt-image" style="transform: rotate(@(-roll)deg);" />
+        </div>
+        <p>@roll°</p>
+    </div>
+
+    <!-- Y Ekseni (Pitch - ileri/geri eğim) -->
+    <div class="col">
+        <p><strong>Y Axis (Pitch)</strong></p>
+        <div class="tilt-container">
+            <img src="images/car_side.png" class="tilt-image" style="transform: rotate(@(-pitch)deg);" />
+        </div>
+        <p>@pitch°</p>
+    </div>
+</div>
 
 @code {
-
+    double roll = 10.0;   // X ekseni eğimi (sağ-sol)
+    double pitch = -5.0;  // Y ekseni eğimi (ileri-geri)
 }

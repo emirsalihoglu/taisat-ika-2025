@@ -1,5 +1,44 @@
-﻿<h3>ControlPanel</h3>
+﻿<h3>Control Panel</h3>
+
+<div class="mb-3">
+    <div class="d-flex justify-content-center mb-2">
+        <button class="btn btn-secondary me-2" @onclick='() => SendCommand("forward")'>↑</button>
+    </div>
+    <div class="d-flex justify-content-center mb-2">
+        <button class="btn btn-secondary me-2" @onclick='() => SendCommand("left")'>←</button>
+        <button class="btn btn-danger me-2" @onclick='() => SendCommand("stop")'>⏹</button>
+        <button class="btn btn-secondary me-2" @onclick='() => SendCommand("right")'>→</button>
+    </div>
+    <div class="d-flex justify-content-center">
+        <button class="btn btn-secondary" @onclick='() => SendCommand("backward")'>↓</button>
+    </div>
+</div>
+
+<div class="mb-3">
+    <button class="btn btn-warning me-3" @onclick="ToggleAutonomous">
+        @(autonomousEnabled ? "Disable Autonomous" : "Enable Autonomous")
+    </button>
+
+    <span>
+        Autonomous Mode:
+        <strong class="@StatusClass">@StatusText</strong>
+    </span>
+</div>
 
 @code {
+    bool autonomousEnabled = false;
 
+    void SendCommand(string command)
+    {
+        Console.WriteLine($"Sent command: {command}");
+        // Gelecekte WebSocket ile gönderilecek
+    }
+
+    void ToggleAutonomous()
+    {
+        autonomousEnabled = !autonomousEnabled;
+    }
+
+    string StatusText => autonomousEnabled ? "Active" : "Inactive";
+    string StatusClass => autonomousEnabled ? "text-success" : "text-danger";
 }

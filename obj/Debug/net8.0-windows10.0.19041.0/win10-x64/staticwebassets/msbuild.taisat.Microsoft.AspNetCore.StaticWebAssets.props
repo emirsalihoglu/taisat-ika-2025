@@ -12,12 +12,12 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>dex3usdpik</Fingerprint>
-      <Integrity>K1bY5kgLeD7nMlhLfmEK3TdjOVTQGBzyOIF4YwRlzuQ=</Integrity>
+      <Fingerprint>voa7o0x9uj</Fingerprint>
+      <Integrity>35l3h0wWw/E91i2gy2Dojg3SeIqt6ecgb5uXnScMfow=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <FileLength>3339</FileLength>
-      <LastWriteTime>Fri, 18 Jul 2025 16:33:17 GMT</LastWriteTime>
+      <FileLength>3577</FileLength>
+      <LastWriteTime>Sun, 20 Jul 2025 08:02:41 GMT</LastWriteTime>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\app.css'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\bootstrap\bootstrap.min.css'))">
@@ -92,13 +92,33 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>svo52bqi8w</Fingerprint>
-      <Integrity>yITDnW7eOvGey/DYwWtogDDsGWHU5S/AF2C7ZM9X/MU=</Integrity>
+      <Fingerprint>bfxshmss81</Fingerprint>
+      <Integrity>NyHz8rfviVQKlq3Y8euNtxjJceDbTebBdXoh0TqbMHw=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <FileLength>869</FileLength>
-      <LastWriteTime>Fri, 18 Jul 2025 16:33:17 GMT</LastWriteTime>
+      <FileLength>1065</FileLength>
+      <LastWriteTime>Sun, 20 Jul 2025 07:44:48 GMT</LastWriteTime>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\index.html'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\leaflet-map.js'))">
+      <SourceType>Package</SourceType>
+      <SourceId>taisat</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>/</BasePath>
+      <RelativePath>leaflet-map.js</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>0im827fack</Fingerprint>
+      <Integrity>GK4vwioTfImeTjNauQ2qDGvwmqlMC73tauI9HposJs0=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <FileLength>716</FileLength>
+      <LastWriteTime>Sun, 20 Jul 2025 07:42:54 GMT</LastWriteTime>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\leaflet-map.js'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\taisat.styles.css'))">
       <SourceType>Package</SourceType>

@@ -215,3 +215,4 @@ C:\Users\memir\source\repos\taisat\obj\Debug\net8.0-windows10.0.19041.0\win10-x6
 C:\Users\memir\source\repos\taisat\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\qualifiers.txt.intermediate
 C:\Users\memir\source\repos\taisat\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\MultipleQualifiersPerDimensionFound.txt
 C:\Users\memir\source\repos\taisat\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\ProjectArchitectures.txt
+C:\Users\memir\source\repos\taisat\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\taisat.sourcelink.json

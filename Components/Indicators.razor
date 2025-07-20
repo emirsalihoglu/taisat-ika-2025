@@ -1,5 +1,37 @@
-﻿<h3>Indicators</h3>
+﻿<h3>Status Indicators</h3>
+
+<div class="mb-4">
+    <p><strong>Battery:</strong> @batteryLevel%</p>
+    <div class="progress" style="height: 20px;">
+        <div class="progress-bar bg-success" role="progressbar"
+             style="width: @($"{batteryLevel}%")"
+             aria-valuenow="@batteryLevel" aria-valuemin="0" aria-valuemax="100">
+            @batteryLevel%
+        </div>
+    </div>
+</div>
+
+<div class="mb-3">
+    <p><strong>Speed:</strong> @speed km/h</p>
+</div>
+
+<div>
+    <p>
+        <strong>Direction:</strong>
+        <span class="@DirectionClass">@direction</span>
+    </p>
+</div>
 
 @code {
+    int batteryLevel = 85;
+    double speed = 10.5;
+    string direction = "Forward"; // Forward, Reverse, Neutral
 
+    string DirectionClass => direction switch
+    {
+        "Forward" => "text-success",
+        "Reverse" => "text-danger",
+        "Neutral" => "text-warning",
+        _ => "text-muted"
+    };
 }
