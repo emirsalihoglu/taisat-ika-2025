@@ -2,19 +2,31 @@
 
 <h1 class="mb-4">Dashboard</h1>
 
-<Camera />
-<hr />
+<div class="d-flex flex-row gap-3" style="align-items: flex-start;">
+    <!-- Sol taraf: Harita + Kamera -->
+    <div style="flex: 1.6;">
+        <!-- ⭐ biraz daha daraltıldı -->
+        <Camera />
+        <hr />
+        <Map />
+    </div>
 
-<Map />
-<hr />
+    <!-- Sağ taraf: Tilt, Indicators, WebSocket + ControlPanel -->
+    <div style="flex: 1.4; max-height: 95vh; overflow-y: auto;">
+        <!-- ⭐ biraz daha genişletildi -->
+        <Tilt />
+        <hr />
+        <Indicators />
+        <hr />
 
-<WebSocket />
-<hr />
-
-<ControlPanel />
-<hr />
-
-<Indicators />
-<hr />
-
-<Tilt />
+        <!-- WebSocket ve Control Panel yan yana -->
+        <div class="d-flex flex-row gap-3">
+            <div style="flex: 1;">
+                <WebSocket />
+            </div>
+            <div style="flex: 1;">
+                <ControlPanel />
+            </div>
+        </div>
+    </div>
+</div>

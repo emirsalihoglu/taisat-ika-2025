@@ -1,27 +1,36 @@
-﻿<div class="top-row ps-3 navbar navbar-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="">taisat</a>
+﻿@code {
+    private bool isCollapsed = false;
+
+    private string MenuClass => isCollapsed ? "nav-menu collapsed" : "nav-menu";
+    private string TogglerIcon => isCollapsed ? "bi bi-list" : "bi bi-x";
+
+    private void ToggleMenu()
+    {
+        isCollapsed = !isCollapsed;
+    }
+}
+
+<div class="@MenuClass">
+    <div class="nav-header" @onclick="ToggleMenu">
+        <span class="navbar-brand">taisat</span>
     </div>
-</div>
 
-<input type="checkbox" title="Navigation menu" class="navbar-toggler" />
+    @if (!isCollapsed)
+    {
+        <nav class="flex-column nav-scrollable">
+            <div class="nav-item px-3">
+                <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+                    <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span>
+                    <span>Home</span>
+                </NavLink>
+            </div>
 
-<div class="nav-scrollable" onclick="document.querySelector('.navbar-toggler').click()">
-    <nav class="flex-column">
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Home
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="counter">
-                <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span> Counter
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="weather">
-                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Weather
-            </NavLink>
-        </div>
-    </nav>
+            <div class="nav-item px-3">
+                <NavLink class="nav-link" href="usageguide">
+                    <span class="bi bi-info-circle" aria-hidden="true"></span>
+                    <span>Usage Guide</span>
+                </NavLink>
+            </div>
+        </nav>
+    }
 </div>
