@@ -1,23 +1,23 @@
 ﻿<h3>WebSocket Panel</h3>
 
-<div class="mb-2">
-    <label>Server IP:</label>
+<div class="mb-3">
+    <label class="form-label">Server IP</label>
     <input class="form-control" @bind="serverIp" placeholder="ws://127.0.0.1:8080" />
 </div>
 
-<div class="mb-2">
-    <label>Topic:</label>
+<div class="mb-3">
+    <label class="form-label">Topic</label>
     <input class="form-control" @bind="topic" placeholder="example/topic" />
 </div>
 
-<div class="mb-3">
-    <button class="btn btn-success me-2" @onclick="ConnectWebSocket" disabled="@isConnected">Connect</button>
+<div class="mb-3 d-flex flex-wrap gap-2">
+    <button class="btn btn-success" @onclick="ConnectWebSocket" disabled="@isConnected">Connect</button>
     <button class="btn btn-danger" @onclick="DisconnectWebSocket" disabled="@(webSocket is null)">Disconnect</button>
 </div>
 
-<div>
-    Connection Status:
-    <strong class="@statusClass">@statusMessage</strong>
+<div class="mb-2">
+    <span>Connection Status:</span>
+    <strong class="@statusClass ms-2">@statusMessage</strong>
 </div>
 
 @code {
@@ -38,10 +38,8 @@
             cts = new();
             webSocket = new ClientWebSocket();
             await webSocket.ConnectAsync(new Uri(serverIp), cts.Token);
-
             statusMessage = "Connected";
-
-            _ = Task.Run(ReceiveLoop); // veri alma işlemini başlat
+            _ = Task.Run(ReceiveLoop);
         }
         catch (Exception ex)
         {
@@ -86,7 +84,7 @@
                 else
                 {
                     var message = Encoding.UTF8.GetString(buffer, 0, result.Count);
-                    Console.WriteLine($"Received: {message}"); // ileride burada routing yapacağız
+                    Console.WriteLine($"Received: {message}");
                 }
             }
             catch (Exception ex)
@@ -99,4 +97,3 @@
         }
     }
 }
-

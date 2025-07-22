@@ -1,31 +1,39 @@
-﻿html, body {
+﻿/* ===================== */
+/* Genel Stil Ayarları  */
+/* ===================== */
+html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     height: 100%;
     margin: 0;
-    background-color: #1e1e2f; /* 🌑 Ana zemin rengi */
-    color: #e1e1e1; /* 🌕 Yazı rengi */
+    background-color: #1e1e2f;
+    color: #e1e1e1;
+    overflow: hidden;
 }
 
-/* Linkler */
+/* ===================== */
+/* Link ve Butonlar     */
+/* ===================== */
 a, .btn-link {
     color: #58a6ff;
 }
 
-/* Birincil Buton */
 .btn-primary {
     color: #fff;
     background-color: #2e8bff;
     border-color: #1e6fc2;
 }
 
-/* Buton ve form odak stilleri */
-.btn:focus, .btn:active:focus,
-.btn-link.nav-link:focus, .form-control:focus,
+.btn:focus,
+.btn:active:focus,
+.btn-link.nav-link:focus,
+.form-control:focus,
 .form-check-input:focus {
     box-shadow: 0 0 0 0.1rem #fff, 0 0 0 0.25rem #007bff;
 }
 
-/* İçerik Alanı */
+/* ===================== */
+/* İçerik & Başlıklar   */
+/* ===================== */
 .content {
     padding-top: 1.1rem;
     min-height: 100vh;
@@ -33,12 +41,13 @@ a, .btn-link {
     flex-direction: column;
 }
 
-/* Başlıklar */
 h1:focus {
     outline: none;
 }
 
-/* Doğrulama */
+/* ===================== */
+/* Validasyon           */
+/* ===================== */
 .valid.modified:not([type=checkbox]) {
     outline: 1px solid #26b050;
 }
@@ -51,7 +60,9 @@ h1:focus {
     color: #ff6f6f;
 }
 
-/* Hata UI */
+/* ===================== */
+/* Hata Mesajları       */
+/* ===================== */
 #blazor-error-ui {
     background: #2e2e3e;
     color: #fdd;
@@ -67,63 +78,24 @@ h1:focus {
         content: "An error has occurred.";
     }
 
-/* Navigation Menü (Sidebar) */
-.nav-menu {
-    background-color: #2b2b3d;
-    color: #e1e1e1;
-    width: 220px;
-    transition: width 0.3s;
-    overflow-x: hidden;
-}
-
-    /* Menü daraltıldığında */
-    .nav-menu.collapsed {
-        width: 60px;
-    }
-
-        /* Menü tamamen gizlendiğinde sadece marka kısmı kalır */
-        .nav-menu.collapsed.fully {
-            width: 80px; /* yalnızca marka alanı kadar yer */
-            padding-top: 3.5rem; /* menü içerikleriyle boşluk bırak */
-        }
-
-            /* Menü içeriğini tamamen gizle */
-            .nav-menu.collapsed.fully .nav-scrollable {
-                display: none;
-            }
-
-/* Üst Navbar */
-.top-row.navbar {
-    background-color: #121212;
-    border-bottom: 1px solid #333;
-}
-
-    .top-row.navbar a {
-        color: #58a6ff;
-    }
-
-/* Menü Toggle Butonu */
-.menu-toggle {
-    position: absolute;
-    top: 1rem;
-    left: 1rem;
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    color: white;
-    z-index: 10;
-}
-
-/* Kartlar ve Paneller */
+/* ===================== */
+/* Kartlar, Paneller    */
+/* ===================== */
 .card, .panel, .status-indicator, .control-panel {
     background-color: #2e2e3e;
     border: 1px solid #444;
     border-radius: 6px;
     padding: 1rem;
-    margin-bottom: 1rem;
+    height: 100%;
+    overflow: hidden;
+    min-height: 0;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
-/* Form Elemanları */
+/* ===================== */
+/* Form Elemanları      */
+/* ===================== */
 input, select, textarea {
     background-color: #1e1e2f;
     color: #e1e1e1;
@@ -135,7 +107,9 @@ input, select, textarea {
         outline: none;
     }
 
-/* Scrollbar */
+/* ===================== */
+/* Scrollbar            */
+/* ===================== */
 ::-webkit-scrollbar {
     width: 8px;
 }
@@ -149,17 +123,101 @@ input, select, textarea {
     border-radius: 4px;
 }
 
-/* Görsel ayırıcı */
+/* ===================== */
+/* Görsel Ayırıcı       */
+/* ===================== */
 hr {
     border-color: #444;
 }
 
-/* Satır boşluğu */
-.row {
+/* ===================== */
+/* Status Bar           */
+/* ===================== */
+.status-bar {
+    font-size: 0.95rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
     gap: 1rem;
 }
 
-/* Tilt Container */
+/* ===================== */
+/* Control Panel Grid   */
+/* ===================== */
+.control-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    justify-items: center;
+    align-items: center;
+}
+
+/* ===================== */
+/* Ana Yerleşim Alanı   */
+/* ===================== */
+.main-layout {
+    padding-top: 100px;
+    height: calc(100vh - 100px);
+    overflow: hidden;
+}
+
+.content-grid {
+    display: flex;
+    height: 100%;
+    overflow: hidden;
+    flex-direction: row;
+    gap: 12px;
+}
+
+.left-panel, .right-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    gap: 12px;
+    height: 100%;
+}
+
+/* ===================== */
+/* Panel Bölümleri      */
+/* ===================== */
+.camera-section {
+    flex: 0.4;
+    min-height: 0;
+}
+
+.map-section {
+    flex: 0.6;
+    min-height: 0;
+}
+
+    .map-section .leaflet-container {
+        height: 100% !important;
+        width: 100% !important;
+    }
+
+.tilt-section {
+    flex: 0.3;
+    min-height: 0;
+}
+
+.ws-control-section {
+    flex: 0.7;
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+}
+
+    .ws-control-section > .card {
+        height: 100%;
+        min-height: 0;
+    }
+
+/* ===================== */
+/* Tilt Kutusu          */
+/* ===================== */
 .tilt-container {
     height: 150px;
     display: flex;
@@ -167,15 +225,39 @@ hr {
     align-items: center;
 }
 
-/* Tilt Görsel */
 .tilt-image {
     height: 100px;
     transition: transform 0.4s ease-in-out;
 }
 
-/* Responsive */
+/* ===================== */
+/* Responsive Ayarlar   */
+/* ===================== */
 @media (max-width: 992px) {
     .d-flex.flex-row {
         flex-direction: column;
+    }
+
+    .content-grid {
+        flex-direction: column;
+    }
+
+    .left-panel, .right-panel {
+        width: 100%;
+        flex: none;
+        height: 50%;
+    }
+
+    .control-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .row {
+        gap: 0.5rem;
+    }
+
+    .status-bar {
+        flex-direction: column;
+        align-items: flex-start;
     }
 }

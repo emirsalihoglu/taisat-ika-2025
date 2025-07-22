@@ -1,29 +1,39 @@
 ﻿<h3>Control Panel</h3>
 
-<div class="mb-3">
-    <div class="d-flex justify-content-center mb-2">
-        <button class="btn btn-secondary me-2" @onclick='() => SendCommand("forward")'>↑</button>
-    </div>
-    <div class="d-flex justify-content-center mb-2">
-        <button class="btn btn-secondary me-2" @onclick='() => SendCommand("left")'>←</button>
-        <button class="btn btn-danger me-2" @onclick='() => SendCommand("stop")'>⏹</button>
-        <button class="btn btn-secondary me-2" @onclick='() => SendCommand("right")'>→</button>
-    </div>
-    <div class="d-flex justify-content-center">
+<div class="control-wrapper d-flex flex-column justify-content-between h-100">
+    <div class="control-grid">
+        <button class="btn btn-secondary" @onclick='() => SendCommand("forward")'>↑</button>
+        <div></div>
         <button class="btn btn-secondary" @onclick='() => SendCommand("backward")'>↓</button>
+        <button class="btn btn-secondary" @onclick='() => SendCommand("left")'>←</button>
+        <button class="btn btn-danger" @onclick='() => SendCommand("stop")'>⏹</button>
+        <button class="btn btn-secondary" @onclick='() => SendCommand("right")'>→</button>
+    </div>
+
+    <div class="text-center mt-3">
+        <button class="btn btn-warning me-3" @onclick="ToggleAutonomous">
+            @(autonomousEnabled ? "Disable Autonomous" : "Enable Autonomous")
+        </button>
+        <span>
+            Autonomous Mode:
+            <strong class="@StatusClass">@StatusText</strong>
+        </span>
     </div>
 </div>
 
-<div class="mb-3">
-    <button class="btn btn-warning me-3" @onclick="ToggleAutonomous">
-        @(autonomousEnabled ? "Disable Autonomous" : "Enable Autonomous")
-    </button>
+<style>
+    .control-wrapper {
+        height: 100%;
+    }
 
-    <span>
-        Autonomous Mode:
-        <strong class="@StatusClass">@StatusText</strong>
-    </span>
-</div>
+    .control-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+        justify-items: center;
+        align-items: center;
+    }
+</style>
 
 @code {
     bool autonomousEnabled = false;
@@ -31,7 +41,6 @@
     void SendCommand(string command)
     {
         Console.WriteLine($"Sent command: {command}");
-        // Gelecekte WebSocket ile gönderilecek
     }
 
     void ToggleAutonomous()

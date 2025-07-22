@@ -1,31 +1,45 @@
-﻿<h3>Status Indicators</h3>
+﻿<div class="status-bar d-flex flex-wrap align-items-center gap-4 text-white">
 
-<div class="mb-4">
-    <p><strong>Battery:</strong> @batteryLevel%</p>
-    <div class="progress" style="height: 20px;">
-        <div class="progress-bar bg-success" role="progressbar"
-             style="width: @($"{batteryLevel}%")"
-             aria-valuenow="@batteryLevel" aria-valuemin="0" aria-valuemax="100">
-            @batteryLevel%
+    <!-- Battery -->
+    <div class="d-flex align-items-center flex-grow-1" style="min-width: 180px;">
+        <strong class="me-2">Battery:</strong>
+        <div class="progress w-100" style="height: 20px;">
+            <div class="progress-bar bg-success"
+                 role="progressbar"
+                 style="width: @($"{batteryLevel}%")"
+                 aria-valuenow="@batteryLevel" aria-valuemin="0" aria-valuemax="100">
+                @batteryLevel%
+            </div>
         </div>
+    </div>
+
+    <!-- Speed -->
+    <div>
+        <strong>Speed:</strong> @speed km/h
+    </div>
+
+    <!-- Direction -->
+    <div>
+        <strong>Direction:</strong>
+        <span class="@DirectionClass">@direction</span>
     </div>
 </div>
 
-<div class="mb-3">
-    <p><strong>Speed:</strong> @speed km/h</p>
-</div>
+<style>
+    .status-bar {
+        font-size: 0.95rem;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
 
-<div>
-    <p>
-        <strong>Direction:</strong>
-        <span class="@DirectionClass">@direction</span>
-    </p>
-</div>
+    /* Razor içinde media query desteği yok, burası app.css'e taşınmalı */
+</style>
 
 @code {
     int batteryLevel = 85;
     double speed = 10.5;
-    string direction = "Forward"; // Forward, Reverse, Neutral
+    string direction = "Forward";
 
     string DirectionClass => direction switch
     {

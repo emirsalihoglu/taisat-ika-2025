@@ -29,7 +29,7 @@
     <AppXManifest Include="C:\Users\memir\source\repos\taisat\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2025-07-20T10:08:32.401</Modified>
+      <Modified>2025-07-22T14:30:01.195</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
@@ -43,11 +43,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\memir\source\repos\taisat\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\taisat.dll">
       <PackagePath>taisat.dll</PackagePath>
-      <Modified>2025-07-20T10:08:32.141</Modified>
+      <Modified>2025-07-22T14:23:10.549</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\memir\source\repos\taisat\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\apphost.exe">
       <PackagePath>taisat.exe</PackagePath>
-      <Modified>2025-07-20T10:08:32.146</Modified>
+      <Modified>2025-07-22T14:23:10.604</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\memir\source\repos\taisat\Resources\Raw\AboutAssets.txt">
       <PackagePath>AboutAssets.txt</PackagePath>
@@ -55,7 +55,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\memir\source\repos\taisat\wwwroot\css\app.css">
       <PackagePath>wwwroot\css\app.css</PackagePath>
-      <Modified>2025-07-20T09:12:38.805</Modified>
+      <Modified>2025-07-22T14:29:58.002</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\memir\source\repos\taisat\wwwroot\css\bootstrap\bootstrap.min.css">
       <PackagePath>wwwroot\css\bootstrap\bootstrap.min.css</PackagePath>
@@ -663,7 +663,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\memir\source\repos\taisat\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\staticwebassets.build.endpoints.json">
       <PackagePath>taisat.staticwebassets.endpoints.json</PackagePath>
-      <Modified>2025-07-20T10:06:58.883</Modified>
+      <Modified>2025-07-22T14:30:00.949</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\memir\.nuget\packages\microsoft.maui.controls.compatibility\8.0.100\lib\net8.0-windows10.0.19041\Microsoft.Maui.Controls.Compatibility.pri">
       <PackagePath>Microsoft.Maui.Controls.Compatibility.pri</PackagePath>

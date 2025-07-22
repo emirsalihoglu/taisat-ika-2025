@@ -1,32 +1,36 @@
 ﻿@page "/"
 
-<h1 class="mb-4">Dashboard</h1>
+<!-- Üst sabit bar -->
+<div style="position: fixed; top: 0; left: 0; right: 0; z-index: 1030; background-color: #1e1e2f; padding: 0.5rem 1rem;">
+    <Indicators />
+</div>
 
-<div class="d-flex flex-row gap-3" style="align-items: flex-start;">
-    <!-- Sol taraf: Harita + Kamera -->
-    <div style="flex: 1.6;">
-        <!-- ⭐ biraz daha daraltıldı -->
-        <Camera />
-        <hr />
-        <Map />
+<!-- İçerik alanı -->
+<div class="main-layout" style="padding-top: 100px; height: calc(100vh - 100px); display: flex; flex-direction: row; gap: 12px; padding-left: 12px; padding-right: 12px;">
+
+    <!-- Sol Panel -->
+    <div class="d-flex flex-column gap-3 flex-fill">
+        <div class="camera-section card">
+            <Camera />
+        </div>
+        <div class="map-section card">
+            <Map />
+        </div>
     </div>
 
-    <!-- Sağ taraf: Tilt, Indicators, WebSocket + ControlPanel -->
-    <div style="flex: 1.4; max-height: 95vh; overflow-y: auto;">
-        <!-- ⭐ biraz daha genişletildi -->
-        <Tilt />
-        <hr />
-        <Indicators />
-        <hr />
-
-        <!-- WebSocket ve Control Panel yan yana -->
-        <div class="d-flex flex-row gap-3">
-            <div style="flex: 1;">
+    <!-- Sağ Panel -->
+    <div class="d-flex flex-column gap-3 flex-fill">
+        <div class="tilt-section card">
+            <Tilt />
+        </div>
+        <div class="ws-control-section">
+            <div class="card flex-fill">
                 <WebSocket />
             </div>
-            <div style="flex: 1;">
+            <div class="card flex-fill">
                 <ControlPanel />
             </div>
         </div>
     </div>
+
 </div>
