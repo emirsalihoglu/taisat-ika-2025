@@ -40,6 +40,9 @@
     <AppxPackagedFile Include="C:\Users\memir\source\repos\taisat\Resources\Raw\AboutAssets.txt">
       <PackagePath>AboutAssets.txt</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\memir\source\repos\taisat\wwwroot\camera.js">
+      <PackagePath>wwwroot\camera.js</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\memir\source\repos\taisat\wwwroot\css\app.css">
       <PackagePath>wwwroot\css\app.css</PackagePath>
     </AppxPackagedFile>
@@ -57,6 +60,9 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\memir\source\repos\taisat\wwwroot\leaflet-map.js">
       <PackagePath>wwwroot\leaflet-map.js</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\memir\source\repos\taisat\wwwroot\rviz.js">
+      <PackagePath>wwwroot\rviz.js</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\memir\source\repos\taisat\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\sp\splashSplashScreen.scale-100.png">
       <PackagePath>splashSplashScreen.scale-100.png</PackagePath>

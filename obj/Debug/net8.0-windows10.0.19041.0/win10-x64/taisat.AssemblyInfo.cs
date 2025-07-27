@@ -18,7 +18,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("taisat")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+393e208a38671a3979014511910db38946d76868")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+32c74d2964d5815d84b71a7ca6e8a423246f825a")]
 [assembly: System.Reflection.AssemblyProductAttribute("taisat")]
 [assembly: System.Reflection.AssemblyTitleAttribute("taisat")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

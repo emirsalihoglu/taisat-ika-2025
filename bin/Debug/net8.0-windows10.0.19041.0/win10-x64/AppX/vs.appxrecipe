@@ -29,13 +29,13 @@
     <AppXManifest Include="C:\Users\memir\source\repos\taisat\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2025-07-22T14:30:01.195</Modified>
+      <Modified>2025-07-27T08:25:43.472</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\memir\source\repos\taisat\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2025-07-20T07:43:45.737</Modified>
+      <Modified>2025-07-26T15:37:41.459</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\memir\source\repos\taisat\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\taisat.runtimeconfig.json">
       <PackagePath>taisat.runtimeconfig.json</PackagePath>
@@ -43,19 +43,23 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\memir\source\repos\taisat\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\taisat.dll">
       <PackagePath>taisat.dll</PackagePath>
-      <Modified>2025-07-22T14:23:10.549</Modified>
+      <Modified>2025-07-27T08:25:34.685</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\memir\source\repos\taisat\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\apphost.exe">
       <PackagePath>taisat.exe</PackagePath>
-      <Modified>2025-07-22T14:23:10.604</Modified>
+      <Modified>2025-07-27T08:25:34.748</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\memir\source\repos\taisat\Resources\Raw\AboutAssets.txt">
       <PackagePath>AboutAssets.txt</PackagePath>
       <Modified>2025-07-18T16:33:17.135</Modified>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\memir\source\repos\taisat\wwwroot\camera.js">
+      <PackagePath>wwwroot\camera.js</PackagePath>
+      <Modified>2025-07-26T15:39:47.252</Modified>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\memir\source\repos\taisat\wwwroot\css\app.css">
       <PackagePath>wwwroot\css\app.css</PackagePath>
-      <Modified>2025-07-22T14:29:58.002</Modified>
+      <Modified>2025-07-26T14:02:18.466</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\memir\source\repos\taisat\wwwroot\css\bootstrap\bootstrap.min.css">
       <PackagePath>wwwroot\css\bootstrap\bootstrap.min.css</PackagePath>
@@ -71,11 +75,15 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\memir\source\repos\taisat\wwwroot\index.html">
       <PackagePath>wwwroot\index.html</PackagePath>
-      <Modified>2025-07-20T07:44:48.662</Modified>
+      <Modified>2025-07-26T15:37:30.902</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\memir\source\repos\taisat\wwwroot\leaflet-map.js">
       <PackagePath>wwwroot\leaflet-map.js</PackagePath>
-      <Modified>2025-07-20T07:42:54.047</Modified>
+      <Modified>2025-07-27T08:25:33.307</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\memir\source\repos\taisat\wwwroot\rviz.js">
+      <PackagePath>wwwroot\rviz.js</PackagePath>
+      <Modified>2025-07-26T13:14:24.176</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\memir\source\repos\taisat\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\resizetizer\sp\splashSplashScreen.scale-100.png">
       <PackagePath>splashSplashScreen.scale-100.png</PackagePath>
@@ -307,7 +315,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\memir\source\repos\taisat\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\taisat.deps.json">
       <PackagePath>taisat.deps.json</PackagePath>
-      <Modified>2025-07-18T17:28:13.330</Modified>
+      <Modified>2025-07-22T14:52:46.237</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\memir\.nuget\packages\microsoft.windows.sdk.net.ref\10.0.19041.57\lib\net8.0\Microsoft.Windows.SDK.NET.dll">
       <PackagePath>Microsoft.Windows.SDK.NET.dll</PackagePath>
@@ -663,7 +671,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\memir\source\repos\taisat\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\staticwebassets.build.endpoints.json">
       <PackagePath>taisat.staticwebassets.endpoints.json</PackagePath>
-      <Modified>2025-07-22T14:30:00.949</Modified>
+      <Modified>2025-07-27T08:25:43.211</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\memir\.nuget\packages\microsoft.maui.controls.compatibility\8.0.100\lib\net8.0-windows10.0.19041\Microsoft.Maui.Controls.Compatibility.pri">
       <PackagePath>Microsoft.Maui.Controls.Compatibility.pri</PackagePath>

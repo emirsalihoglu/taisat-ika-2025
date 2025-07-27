@@ -6,11 +6,12 @@
 </div>
 
 <!-- İçerik alanı -->
-<div class="main-layout" style="padding-top: 100px; height: calc(100vh - 100px); display: flex; flex-direction: row; gap: 12px; padding-left: 12px; padding-right: 12px;">
+<div class="main-layout content-grid">
 
     <!-- Sol Panel -->
-    <div class="d-flex flex-column gap-3 flex-fill">
-        <div class="camera-section card">
+    <div class="left-panel">
+        <div class="camera-section card p-0">
+            <!-- Başlık kaldırıldı, padding sıfırlandı -->
             <Camera />
         </div>
         <div class="map-section card">
@@ -19,15 +20,18 @@
     </div>
 
     <!-- Sağ Panel -->
-    <div class="d-flex flex-column gap-3 flex-fill">
-        <div class="tilt-section card">
-            <Tilt />
+    <div class="right-panel">
+        <!-- Rviz alanı daha fazla alan alsın -->
+        <div class="rviz-map card">
+            <RvizPanel />
         </div>
-        <div class="ws-control-section">
-            <div class="card flex-fill">
+
+        <!-- Alt kontroller -->
+        <div class="bottom-controls">
+            <div class="card websocket-card">
                 <WebSocket />
             </div>
-            <div class="card flex-fill">
+            <div class="card control-card">
                 <ControlPanel />
             </div>
         </div>

@@ -1,5 +1,25 @@
 ﻿<Project>
   <ItemGroup>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\camera.js'))">
+      <SourceType>Package</SourceType>
+      <SourceId>taisat</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>/</BasePath>
+      <RelativePath>camera.js</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>5ipweew5fc</Fingerprint>
+      <Integrity>47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <FileLength>0</FileLength>
+      <LastWriteTime>Sat, 26 Jul 2025 15:37:01 GMT</LastWriteTime>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\camera.js'))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\app.css'))">
       <SourceType>Package</SourceType>
       <SourceId>taisat</SourceId>
@@ -12,12 +32,12 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>a1blz5gjbh</Fingerprint>
-      <Integrity>HiIEjpvRWBBqsdLWMLDnEseL/i41sv9llHR32J3SpGQ=</Integrity>
+      <Fingerprint>n9qkbw2uew</Fingerprint>
+      <Integrity>BTM7txn2bwn2Nr8yUlWogMEIc18HVSh0peQ57NnL8WY=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <FileLength>3575</FileLength>
-      <LastWriteTime>Sun, 20 Jul 2025 08:08:54 GMT</LastWriteTime>
+      <FileLength>4106</FileLength>
+      <LastWriteTime>Sat, 26 Jul 2025 14:02:18 GMT</LastWriteTime>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\app.css'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\bootstrap\bootstrap.min.css'))">
@@ -92,12 +112,12 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>bfxshmss81</Fingerprint>
-      <Integrity>NyHz8rfviVQKlq3Y8euNtxjJceDbTebBdXoh0TqbMHw=</Integrity>
+      <Fingerprint>g0uxxw2h49</Fingerprint>
+      <Integrity>MLdCAMOkYnsJFP2iV62Q35AO+plX2oKxglFMHO5cqDk=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <FileLength>1065</FileLength>
-      <LastWriteTime>Sun, 20 Jul 2025 07:44:48 GMT</LastWriteTime>
+      <FileLength>1102</FileLength>
+      <LastWriteTime>Sat, 26 Jul 2025 12:42:38 GMT</LastWriteTime>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\index.html'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\leaflet-map.js'))">
@@ -119,6 +139,26 @@
       <FileLength>716</FileLength>
       <LastWriteTime>Sun, 20 Jul 2025 07:42:54 GMT</LastWriteTime>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\leaflet-map.js'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\rviz.js'))">
+      <SourceType>Package</SourceType>
+      <SourceId>taisat</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>/</BasePath>
+      <RelativePath>rviz.js</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>1evhnjuhni</Fingerprint>
+      <Integrity>KXwpQEGYblJXrhzGm7x3rSF/q1h6cJDKnXbvz59Xa4w=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <FileLength>2951</FileLength>
+      <LastWriteTime>Sat, 26 Jul 2025 13:14:24 GMT</LastWriteTime>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\rviz.js'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\taisat.styles.css'))">
       <SourceType>Package</SourceType>

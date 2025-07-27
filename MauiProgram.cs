@@ -16,10 +16,12 @@ namespace taisat
 
             builder.Services.AddMauiBlazorWebView();
 
+            // WebSocketService'i DI sistemine ekle
+            builder.Services.AddSingleton<WebSocketService>();
 
 #if DEBUG
             builder.Services.AddBlazorWebViewDeveloperTools();
-    		builder.Logging.AddDebug();
+            builder.Logging.AddDebug();
 #endif
 
             return builder.Build();

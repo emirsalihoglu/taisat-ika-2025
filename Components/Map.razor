@@ -1,4 +1,8 @@
-﻿<h3>Live Map</h3>
+﻿@inject IJSRuntime JS
+@inject WebSocketService WsService
+@using System.Text.Json;
+
+<h3>Live Map</h3>
 
 <div id="map-container">
     <div id="map"></div>
@@ -8,14 +12,30 @@
     <p><strong>Current Position:</strong> @mouseLat, @mouseLng</p>
     <p><strong>Selected Target:</strong> @(targetLat is not null ? $"{targetLat}, {targetLng}" : "None")</p>
 
-    <button class="btn btn-primary" @onclick="ConfirmTarget" disabled="@targetConfirmed || targetLat is null">
+    <button class="btn btn-primary me-2" @onclick="ConfirmTarget" disabled="@targetConfirmed || targetLat is null">
         Confirm Target
     </button>
 
     @if (targetConfirmed)
     {
         <p class="text-success mt-2">Target locked.</p>
+        <button class="btn btn-outline-danger mt-1" @onclick="ClearTarget">Clear Target</button>
     }
+
+    <hr />
+
+    <h5>Set Target Manually</h5>
+    <div class="row g-2">
+        <div class="col">
+            <input type="number" class="form-control" step="any" @bind="manualLat" placeholder="Latitude" />
+        </div>
+        <div class="col">
+            <input type="number" class="form-control" step="any" @bind="manualLng" placeholder="Longitude" />
+        </div>
+        <div class="col-auto">
+            <button class="btn btn-outline-primary" @onclick="SetManualTarget">Set Target</button>
+        </div>
+    </div>
 </div>
 
 <style>
@@ -36,21 +56,26 @@
 </style>
 
 @code {
-    [Inject] IJSRuntime JS { get; set; } = default!;
-
     double mouseLat;
     double mouseLng;
 
     double? targetLat;
     double? targetLng;
 
+    double? manualLat;
+    double? manualLng;
+
     bool targetConfirmed = false;
+
+    double robotLat;
+    double robotLng;
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
         {
             await JS.InvokeVoidAsync("initializeLeafletMap", DotNetObjectReference.Create(this));
+            WsService.RegisterHandler("/my_robot/gps", HandleOdom);
         }
     }
 
@@ -79,5 +104,52 @@
     void ConfirmTarget()
     {
         targetConfirmed = true;
+    }
+
+    void ClearTarget()
+    {
+        targetConfirmed = false;
+        targetLat = null;
+        targetLng = null;
+
+        _ = JS.InvokeVoidAsync("clearTargetMarker");
+    }
+
+    void SetManualTarget()
+    {
+        if (manualLat != null && manualLng != null)
+        {
+            targetLat = manualLat;
+            targetLng = manualLng;
+            targetConfirmed = false;
+
+            _ = JS.InvokeVoidAsync("setManualMarker", targetLat.Value, targetLng.Value);
+        }
+    }
+
+    void HandleOdom(byte[] data)
+    {
+        try
+        {
+            var json = Encoding.UTF8.GetString(data);
+            var pos = JsonSerializer.Deserialize<Position>(json);
+
+            if (pos is not null)
+            {
+                robotLat = pos.x;
+                robotLng = pos.y;
+                _ = JS.InvokeVoidAsync("updateRobotPosition", robotLat, robotLng);
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"❌ GPS verisi çözümleme hatası: {ex.Message}");
+        }
+    }
+
+    class Position
+    {
+        public double x { get; set; }
+        public double y { get; set; }
     }
 }

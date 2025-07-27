@@ -1,20 +1,10 @@
-﻿<h3>Camera</h3>
+﻿@inject WebSocketService WsService
+@inject IJSRuntime JS
 
 <div class="camera-grid">
-    @for (int i = 1; i <= 3; i++)
-    {
-        <div class="camera-item">
-            <button class="btn btn-primary mb-2" @onclick="() => TakePhotoAsync(i)">📷</button>
-            @if (GetPhoto(i) is string path && !string.IsNullOrEmpty(path))
-            {
-                <img src="@path" class="camera-img rounded" />
-            }
-            else
-            {
-                <div class="placeholder-box"></div>
-            }
-        </div>
-    }
+    <canvas id="frontCamCanvas" width="320" height="240" class="camera-canvas"></canvas>
+    <canvas id="backCamCanvas" width="320" height="240" class="camera-canvas"></canvas>
+    <canvas id="depthCamCanvas" width="320" height="240" class="camera-canvas"></canvas>
 </div>
 
 <style>
@@ -25,65 +15,40 @@
         height: 100%;
     }
 
-    .camera-item {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-    }
-
-    .camera-img,
-    .placeholder-box {
+    .camera-canvas {
         width: 100%;
-        height: 100%;
-        flex-grow: 1;
-        object-fit: cover;
-        background-color: #2c2c2c;
-        border: 2px dashed #555;
-        border-radius: 4px;
+        height: auto;
+        border: 1px solid #444;
+        background-color: #000;
+        border-radius: 6px;
     }
 </style>
 
 @code {
-    string? photo1, photo2, photo3;
-
-    string? GetPhoto(int index) => index switch
+    protected override void OnInitialized()
     {
-        1 => photo1,
-        2 => photo2,
-        3 => photo3,
-        _ => null
-    };
+        WsService.RegisterHandler("/my_robot/front_rgb_cam/image_color", async data =>
+        {
+            Console.WriteLine($"🎥 Front: {data.Length} bytes");
+            await Draw("frontCamCanvas", data);
+        });
 
-    async Task TakePhotoAsync(int index)
+        WsService.RegisterHandler("/my_robot/back_rgb_cam/image_color", async data =>
+        {
+            Console.WriteLine($"🎥 Back: {data.Length} bytes");
+            await Draw("backCamCanvas", data);
+        });
+
+        WsService.RegisterHandler("/my_robot/depth_camera/image", async data =>
+        {
+            Console.WriteLine($"🎥 Depth: {data.Length} bytes");
+            await Draw("depthCamCanvas", data);
+        });
+    }
+
+    async Task Draw(string canvasId, byte[] rawData)
     {
-        try
-        {
-            if (!MediaPicker.Default.IsCaptureSupported)
-            {
-                await App.Current.MainPage.DisplayAlert("Error", "Camera not supported", "OK");
-                return;
-            }
-
-            var photo = await MediaPicker.Default.CapturePhotoAsync();
-            if (photo is not null)
-            {
-                var newFile = Path.Combine(FileSystem.CacheDirectory, photo.FileName);
-                using var stream = await photo.OpenReadAsync();
-                using var newStream = File.OpenWrite(newFile);
-                await stream.CopyToAsync(newStream);
-
-                switch (index)
-                {
-                    case 1: photo1 = newFile; break;
-                    case 2: photo2 = newFile; break;
-                    case 3: photo3 = newFile; break;
-                }
-            }
-        }
-        catch (Exception ex)
-        {
-            await App.Current.MainPage.DisplayAlert("Error", ex.Message, "OK");
-        }
+        var base64 = Convert.ToBase64String(rawData);
+        await JS.InvokeVoidAsync("drawRawRGB", canvasId, base64, 320, 240);
     }
 }

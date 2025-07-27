@@ -1,0 +1,37 @@
+﻿@inject IJSRuntime JS
+@inject WebSocketService WsService
+
+<div style="flex: 1; width: 100%; display: flex; justify-content: center; align-items: center;">
+    <canvas id="rvizCanvas" style="width: 100%; height: auto; max-height: 400px; border:1px solid #444;"></canvas>
+</div>
+
+@code {
+    string? latestMapJson = null;
+    string? latestPathJson = null;
+
+    protected override void OnInitialized()
+    {
+        WsService.RegisterHandler("/map", HandleMap);
+        WsService.RegisterHandler("/path", HandlePath);
+    }
+
+    void HandleMap(byte[] data)
+    {
+        latestMapJson = Encoding.UTF8.GetString(data);
+        TryRender();
+    }
+
+    void HandlePath(byte[] data)
+    {
+        latestPathJson = Encoding.UTF8.GetString(data);
+        TryRender();
+    }
+
+    async void TryRender()
+    {
+        if (!string.IsNullOrEmpty(latestMapJson) && !string.IsNullOrEmpty(latestPathJson))
+        {
+            await JS.InvokeVoidAsync("renderMapAndPath", latestMapJson, latestPathJson);
+        }
+    }
+}

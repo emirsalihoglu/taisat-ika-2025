@@ -1,18 +1,15 @@
-﻿<h3>WebSocket Panel</h3>
+﻿@inject WebSocketService WsService
+
+<h3>WebSocket Panel</h3>
 
 <div class="mb-3">
     <label class="form-label">Server IP</label>
     <input class="form-control" @bind="serverIp" placeholder="ws://127.0.0.1:8080" />
 </div>
 
-<div class="mb-3">
-    <label class="form-label">Topic</label>
-    <input class="form-control" @bind="topic" placeholder="example/topic" />
-</div>
-
 <div class="mb-3 d-flex flex-wrap gap-2">
-    <button class="btn btn-success" @onclick="ConnectWebSocket" disabled="@isConnected">Connect</button>
-    <button class="btn btn-danger" @onclick="DisconnectWebSocket" disabled="@(webSocket is null)">Disconnect</button>
+    <button class="btn btn-success" @onclick="Connect" disabled="@isConnected">Connect</button>
+    <button class="btn btn-danger" @onclick="Disconnect" disabled="@(!isConnected)">Disconnect</button>
 </div>
 
 <div class="mb-2">
@@ -21,79 +18,21 @@
 </div>
 
 @code {
-    string serverIp = "ws://xxx.xxx.xxx.xxx:pppp";
-    string topic = "example/topic";
-    ClientWebSocket? webSocket;
-    CancellationTokenSource? cts;
-
-    bool isConnected => webSocket?.State == WebSocketState.Open;
-
+    string serverIp = "ws://192.168.64.156:9090";
     string statusMessage = "Not connected";
+
+    bool isConnected => statusMessage == "Connected";
     string statusClass => isConnected ? "text-success" : "text-danger";
 
-    async Task ConnectWebSocket()
+    protected override void OnInitialized()
     {
-        try
+        WsService.OnStatusChanged += (msg) =>
         {
-            cts = new();
-            webSocket = new ClientWebSocket();
-            await webSocket.ConnectAsync(new Uri(serverIp), cts.Token);
-            statusMessage = "Connected";
-            _ = Task.Run(ReceiveLoop);
-        }
-        catch (Exception ex)
-        {
-            statusMessage = $"Error: {ex.Message}";
-        }
-        StateHasChanged();
+            statusMessage = msg;
+            InvokeAsync(StateHasChanged);
+        };
     }
 
-    async Task DisconnectWebSocket()
-    {
-        try
-        {
-            if (webSocket != null)
-            {
-                await webSocket.CloseAsync(WebSocketCloseStatus.NormalClosure, "Closed by user", CancellationToken.None);
-                webSocket.Dispose();
-                webSocket = null;
-                statusMessage = "Disconnected";
-            }
-        }
-        catch (Exception ex)
-        {
-            statusMessage = $"Error: {ex.Message}";
-        }
-        StateHasChanged();
-    }
-
-    async Task ReceiveLoop()
-    {
-        var buffer = new byte[4096];
-
-        while (webSocket?.State == WebSocketState.Open)
-        {
-            try
-            {
-                var result = await webSocket.ReceiveAsync(new ArraySegment<byte>(buffer), CancellationToken.None);
-                if (result.MessageType == WebSocketMessageType.Close)
-                {
-                    statusMessage = "Disconnected by server";
-                    await webSocket.CloseAsync(WebSocketCloseStatus.NormalClosure, "Closing", CancellationToken.None);
-                }
-                else
-                {
-                    var message = Encoding.UTF8.GetString(buffer, 0, result.Count);
-                    Console.WriteLine($"Received: {message}");
-                }
-            }
-            catch (Exception ex)
-            {
-                statusMessage = $"Receive error: {ex.Message}";
-                break;
-            }
-
-            StateHasChanged();
-        }
-    }
+    async Task Connect() => await WsService.ConnectAsync(serverIp);
+    async Task Disconnect() => await WsService.DisconnectAsync();
 }

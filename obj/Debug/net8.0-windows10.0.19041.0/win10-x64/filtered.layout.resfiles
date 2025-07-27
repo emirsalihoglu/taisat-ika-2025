@@ -60,9 +60,11 @@ splashSplashScreen.scale-400.png
 wwwroot\taisat.styles.css
 wwwroot\taisat.u94cwa1ekx.bundle.scp.css
 AboutAssets.txt
+wwwroot\camera.js
 wwwroot\css\app.css
 wwwroot\css\bootstrap\bootstrap.min.css
 wwwroot\css\bootstrap\bootstrap.min.css.map
 wwwroot\favicon.png
 wwwroot\index.html
 wwwroot\leaflet-map.js
+wwwroot\rviz.js

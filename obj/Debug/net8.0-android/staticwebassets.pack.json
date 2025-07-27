@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\taisat.styles.css"
     },
     {
+      "Id": "C:\\Users\\memir\\source\\repos\\taisat\\wwwroot\\camera.js",
+      "PackagePath": "staticwebassets\\camera.js"
+    },
+    {
       "Id": "C:\\Users\\memir\\source\\repos\\taisat\\wwwroot\\css\\app.css",
       "PackagePath": "staticwebassets\\css\\app.css"
     },
@@ -27,6 +31,10 @@
     {
       "Id": "C:\\Users\\memir\\source\\repos\\taisat\\wwwroot\\leaflet-map.js",
       "PackagePath": "staticwebassets\\leaflet-map.js"
+    },
+    {
+      "Id": "C:\\Users\\memir\\source\\repos\\taisat\\wwwroot\\rviz.js",
+      "PackagePath": "staticwebassets\\rviz.js"
     },
     {
       "Id": "obj\\Debug\\net8.0-android\\staticwebassets\\msbuild.build.taisat.props",

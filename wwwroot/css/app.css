@@ -10,9 +10,7 @@ html, body {
     overflow: hidden;
 }
 
-/* ===================== */
-/* Link ve Butonlar     */
-/* ===================== */
+/* Link ve Butonlar */
 a, .btn-link {
     color: #58a6ff;
 }
@@ -31,9 +29,7 @@ a, .btn-link {
     box-shadow: 0 0 0 0.1rem #fff, 0 0 0 0.25rem #007bff;
 }
 
-/* ===================== */
-/* İçerik & Başlıklar   */
-/* ===================== */
+/* İçerik & Başlıklar */
 .content {
     padding-top: 1.1rem;
     min-height: 100vh;
@@ -45,9 +41,7 @@ h1:focus {
     outline: none;
 }
 
-/* ===================== */
-/* Validasyon           */
-/* ===================== */
+/* Validasyon */
 .valid.modified:not([type=checkbox]) {
     outline: 1px solid #26b050;
 }
@@ -60,9 +54,7 @@ h1:focus {
     color: #ff6f6f;
 }
 
-/* ===================== */
-/* Hata Mesajları       */
-/* ===================== */
+/* Hata Mesajları */
 #blazor-error-ui {
     background: #2e2e3e;
     color: #fdd;
@@ -78,24 +70,19 @@ h1:focus {
         content: "An error has occurred.";
     }
 
-/* ===================== */
-/* Kartlar, Paneller    */
-/* ===================== */
+/* Kartlar ve Paneller */
 .card, .panel, .status-indicator, .control-panel {
     background-color: #2e2e3e;
     border: 1px solid #444;
     border-radius: 6px;
     padding: 1rem;
-    height: 100%;
-    overflow: hidden;
+    height: auto;
     min-height: 0;
     word-wrap: break-word;
     overflow-wrap: break-word;
 }
 
-/* ===================== */
-/* Form Elemanları      */
-/* ===================== */
+/* Form Elemanları */
 input, select, textarea {
     background-color: #1e1e2f;
     color: #e1e1e1;
@@ -107,9 +94,7 @@ input, select, textarea {
         outline: none;
     }
 
-/* ===================== */
-/* Scrollbar            */
-/* ===================== */
+/* Scrollbar */
 ::-webkit-scrollbar {
     width: 8px;
 }
@@ -123,16 +108,7 @@ input, select, textarea {
     border-radius: 4px;
 }
 
-/* ===================== */
-/* Görsel Ayırıcı       */
-/* ===================== */
-hr {
-    border-color: #444;
-}
-
-/* ===================== */
-/* Status Bar           */
-/* ===================== */
+/* Status Bar */
 .status-bar {
     font-size: 0.95rem;
     display: flex;
@@ -143,20 +119,7 @@ hr {
     gap: 1rem;
 }
 
-/* ===================== */
-/* Control Panel Grid   */
-/* ===================== */
-.control-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
-    justify-items: center;
-    align-items: center;
-}
-
-/* ===================== */
-/* Ana Yerleşim Alanı   */
-/* ===================== */
+/* Ana Yerleşim */
 .main-layout {
     padding-top: 100px;
     height: calc(100vh - 100px);
@@ -165,31 +128,35 @@ hr {
 
 .content-grid {
     display: flex;
-    height: 100%;
-    overflow: hidden;
     flex-direction: row;
     gap: 12px;
+    height: 100%;
 }
 
+/* Sol ve Sağ Panel */
 .left-panel, .right-panel {
     flex: 1;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
     gap: 12px;
     height: 100%;
 }
 
-/* ===================== */
-/* Panel Bölümleri      */
-/* ===================== */
+.right-panel {
+    overflow: hidden;
+}
+
+/* Sol Panel Alt Bölümleri */
 .camera-section {
-    flex: 0.4;
+    flex: 0.5; /* Artık %50 */
     min-height: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
 }
 
 .map-section {
-    flex: 0.6;
+    flex: 0.5; /* Diğer yarısı */
     min-height: 0;
 }
 
@@ -198,46 +165,46 @@ hr {
         width: 100% !important;
     }
 
-.tilt-section {
-    flex: 0.3;
-    min-height: 0;
-}
-
-.ws-control-section {
-    flex: 0.7;
-    display: flex;
-    flex-direction: row;
-    gap: 12px;
-}
-
-    .ws-control-section > .card {
-        height: 100%;
-        min-height: 0;
-    }
-
-/* ===================== */
-/* Tilt Kutusu          */
-/* ===================== */
-.tilt-container {
-    height: 150px;
+/* Rviz Panel */
+.rviz-map {
+    flex: 0.6;
+    overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.tilt-image {
-    height: 100px;
-    transition: transform 0.4s ease-in-out;
+#rvizCanvas {
+    width: 100%;
+    height: 100%;
+    max-height: 400px;
+    border: 1px solid #444;
 }
 
-/* ===================== */
-/* Responsive Ayarlar   */
-/* ===================== */
-@media (max-width: 992px) {
-    .d-flex.flex-row {
-        flex-direction: column;
-    }
+/* WebSocket & Control Panel */
+.bottom-controls {
+    flex: 0.4;
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+}
 
+.websocket-card, .control-card {
+    flex: 1;
+    overflow: hidden;
+}
+
+/* Control Panel Grid */
+.control-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    justify-items: center;
+    align-items: center;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
     .content-grid {
         flex-direction: column;
     }
@@ -250,10 +217,6 @@ hr {
 
     .control-grid {
         grid-template-columns: repeat(2, 1fr);
-    }
-
-    .row {
-        gap: 0.5rem;
     }
 
     .status-bar {
